@@ -2,7 +2,7 @@
 <html lang="en" class="fullscreen-bg">
 
 <head>
-    <title>Erdian-Books | Aplikasi Sistem Administrasi Penjualan Buku</title>
+    <title>Udinus Book | Sistem Manajemen Penjualan Buku Professional</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -12,10 +12,9 @@
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="assets/css/demo.css">
+	<link rel="stylesheet" href="assets/css/udinus-theme.css">
 	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<!-- Koneksi -->
 	<?php
 	include 'admin/konfig.php';
@@ -30,54 +29,74 @@
 	<?php
 	if (isset($_GET['pesan'])) {
 		if ($_GET['pesan'] == "Gagal") {
-			echo "<div style='margin-bottom:-55px' class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span>  Login Gagal !! Username dan Password Salah !!</div>";
+			echo "<div class='alert-overlay'><div class='alert alert-danger modern-alert' role='alert'><i class='fa fa-exclamation-triangle'></i> Login Gagal! Username atau Password salah</div></div>";
 		}
 	}
 	?>
 
 	<!-- WRAPPER -->
 	<div id="wrapper">
-		<div class="vertical-align-wrap">
-
-			<div class="vertical-align-middle">
-				<div class="auth-box ">
-					<div class="left">
-						<div class="content">
-							<div class="header">
-								<div class="logo text-center"><img src="assets/img/logo.png" alt="Erdian Books"></div>
-								<p class="lead">Silahkan masukkan username dan password</p>
-							</div>
-							<form class="form-auth-small" action="cek_login.php" method="post">
-								<div class="form-group">
-									<label for="signin-email" class="control-label sr-only">Username</label>
-									<input type="text" class="form-control" name="username" placeholder="Username">
-								</div>
-								<div class="form-group">
-									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" name="password" placeholder="Password">
-								</div>
-								<div class="form-group clearfix">
-									<label class="fancy-checkbox element-left">
-										<input type="checkbox">
-										<span>Remember me</span>
-									</label>
-								</div>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
-								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span>
-								</div>
-							</form>
+		<div class="login-container">
+			<div class="login-card">
+				<div class="login-header">
+					<div class="logo-container">
+						<div class="logo-icon">
+							<i class="fa fa-book"></i>
 						</div>
+						<h1 class="logo-text">Udinus Book</h1>
+						<p class="logo-subtitle">Sistem Manajemen Penjualan Buku</p>
 					</div>
-					<div class="right">
-						<div class="overlay"></div>
-						<div class="content text">
-							<h1 class="heading">Aplikasi Sistem Administrasi Penjualan Buku</h1>
-							<p>by Erdian</p>
-						</div>
-					</div>
-					<div class="clearfix"></div>
 				</div>
+				
+				<div class="login-body">
+					<form class="login-form" action="cek_login.php" method="post">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<input type="text" class="form-control" name="username" placeholder="Username" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" class="form-control" name="password" placeholder="Password" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="checkbox-container">
+								<input type="checkbox">
+								<span class="checkmark"></span>
+								Ingat saya
+							</label>
+						</div>
+						<button type="submit" class="btn btn-primary btn-login">
+							<i class="fa fa-sign-in"></i> Masuk ke Dashboard
+						</button>
+					</form>
+				</div>
+				
+				<div class="login-footer">
+					<div class="features">
+						<div class="feature">
+							<i class="fa fa-shield"></i>
+							<span>Keamanan Terjamin</span>
+						</div>
+						<div class="feature">
+							<i class="fa fa-chart-line"></i>
+							<span>Laporan Real-time</span>
+						</div>
+						<div class="feature">
+							<i class="fa fa-mobile"></i>
+							<span>Responsive Design</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="background-decoration">
+				<div class="decoration-circle circle-1"></div>
+				<div class="decoration-circle circle-2"></div>
+				<div class="decoration-circle circle-3"></div>
 			</div>
 		</div>
 	</div>

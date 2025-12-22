@@ -145,7 +145,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `hak_akses`, `nama`) VALUES
-('admin', 'admin', 'admin', 'Egi Erdian');
+('admin', 'admin', 'admin', 'Egi Erdian'),
+('yudha', 'yudha', 'admin', 'Yudha'),
+('ardy', 'ardy', 'admin', 'Ardy'),
+('devan', 'devan', 'admin', 'Devan');
 
 --
 -- Indexes for dumped tables

@@ -1,9 +1,10 @@
 <?php
 include 'konfig.php';
-$id = $_GET["id"];
+$id = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
 
-$query = "delete from buku where ID='$id'";
-$result = mysqli_query($koneksi, $query);
+$stmt = mysqli_prepare($koneksi, "DELETE FROM buku WHERE ID = ?");
+mysqli_stmt_bind_param($stmt, "i", $id);
+$result = mysqli_stmt_execute($stmt);
 
 if(!$result){
     die("Gagal menghapus data buku ". mysqli_error($koneksi));

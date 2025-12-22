@@ -5,22 +5,25 @@ session_start();
 // menghubungkan dengan koneksi
 include 'admin/konfig.php';
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-$pas = md5($password);
-// $hak_akses = $_POST['hak_akses'];
+$username = isset($_POST['username']) ? trim($_POST['username']) : '';
+$password = isset($_POST['password']) ? trim($_POST['password']) : '';
 
-// menyeleksi data user dengan username dan password yang sesuai
-$result = mysqli_query($koneksi,"SELECT * FROM user where username='$username' and password='$password'");
+if ($username === '' || $password === '') {
+    header("location:index.php?pesan=Gagal");
+    exit;
+}
 
-$cek = mysqli_num_rows($result);
+$stmt = mysqli_prepare($koneksi, "SELECT username, password, nama FROM user WHERE username = ? AND password = ?");
+mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$cek = $result ? mysqli_num_rows($result) : 0;
 
 if($cek > 0) {
-	$data = mysqli_fetch_assoc($result);
-	//menyimpan session user, nama, status dan id login
-	$_SESSION['username'] = $username;
-	$_SESSION['nama'] = $data['nama'];
-	header("location:admin/index.php");
+    $data = mysqli_fetch_assoc($result);
+    $_SESSION['username'] = $username;
+    $_SESSION['nama'] = $data['nama'];
+    header("location:admin/index.php");
 } else {
     header("location:index.php?pesan=Gagal");
 }
